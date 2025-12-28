@@ -6,7 +6,7 @@
     - 配置 `frontend/package.json` (React, Tailwind, Axios/Query)。
     - 配置 `backend/pyproject.toml` (FastAPI, SQLAlchemy, Pydantic, Uvicorn)。
     - 配置基础的 `docker-compose.yml` 以启动 PostgreSQL 和 Redis。
-- [ ] Task: 后端核心设置
+- [~] Task: 后端核心设置
     - 实现数据库连接逻辑 (`backend/app/db/session.py`)。
     - 创建基础 SQLAlchemy 模型类。
     - 配置 FastAPI CORS 以允许前端请求。
