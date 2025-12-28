@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.data_tables import router as data_tables_router
 
 app = FastAPI(title="EasyQuant Pro API")
 
@@ -16,6 +17,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(data_tables_router, prefix="/api/v1", tags=["data-tables"])
 
 @app.get("/")
 def read_root():
