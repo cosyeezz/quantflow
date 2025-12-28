@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 // import { CopyFeedbackNew } from '../copy-feedback' // TODO: Migrate CopyFeedback
 
 export const inputVariants = cva(
-  'w-full appearance-none border border-eq-border-default bg-components-input-bg-normal py-[7px] text-components-input-text-filled caret-primary-600 outline-none placeholder:text-components-input-text-placeholder hover:border-components-input-border-hover hover:bg-components-input-bg-hover focus:border-components-input-border-active focus:bg-components-input-bg-active focus:shadow-xs transition-all duration-200',
+  'w-full appearance-none border border-transparent bg-components-input-bg-normal py-[7px] text-components-input-text-filled caret-primary-600 outline-none placeholder:text-components-input-text-placeholder hover:border-components-input-border-hover hover:bg-components-input-bg-hover focus:border-components-input-border-active focus:bg-components-input-bg-active focus:shadow-xs transition-all duration-200',
   {
     variants: {
       size: {
@@ -101,7 +101,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
           showClearIcon && value && size === 'large' && 'pr-7',
           (destructive || showCopyIcon) && 'pr-[26px]',
           (destructive || showCopyIcon) && size === 'large' && 'pr-7',
-          disabled && 'cursor-not-allowed border-eq-border-subtle bg-components-input-bg-disabled text-components-input-text-filled-disabled hover:border-eq-border-subtle hover:bg-components-input-bg-disabled',
+          disabled && 'cursor-not-allowed border-transparent bg-components-input-bg-disabled text-components-input-text-filled-disabled hover:border-transparent hover:bg-components-input-bg-disabled',
           destructive && 'border-components-input-border-destructive bg-components-input-bg-destructive text-components-input-text-filled hover:border-components-input-border-destructive hover:bg-components-input-bg-destructive focus:border-components-input-border-destructive focus:bg-components-input-bg-destructive',
           className,
         )}

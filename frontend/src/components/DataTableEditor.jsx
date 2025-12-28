@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ArrowLeft, Save, Loader2, Plus, Trash2, GripVertical, X, Settings, UploadCloud, AlertCircle } from 'lucide-react'
 import api from '../services/api'
-import Select from './ui/Select'
+import Select from './ui/LegacySelect'
 import CategoryManagerModal from './CategoryManagerModal'
 import Modal from './Modal'
 

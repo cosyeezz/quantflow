@@ -118,16 +118,16 @@ export default function Select({
   // Portal Content
   const dropdownContent = (
       <div 
-        className="select-dropdown-portal fixed z-[9999] bg-white dark:bg-[#18181b] border border-eq-border-default rounded-lg shadow-xl overflow-y-auto overflow-x-hidden p-1 ring-1 ring-black/5 focus:outline-none custom-scrollbar"
+        className="select-dropdown-portal fixed z-[9999] bg-white dark:bg-[#18181b] border border-gray-100 dark:border-[#2a2a2e] rounded-xl shadow-2xl overflow-y-auto overflow-x-hidden p-1.5 ring-1 ring-black/5 focus:outline-none custom-scrollbar animate-in fade-in zoom-in-95 duration-100 ease-out"
         style={{ 
             top: coords.top, 
             left: coords.left, 
             width: coords.width,
             minWidth: 'max-content',
-            maxHeight: '15rem' 
+            maxHeight: '20rem' 
         }}
       >
-          <ul className="">
+          <ul className="space-y-0.5">
             {options.length === 0 ? (
               <li className={`text-eq-text-muted text-center ${currentSize.option}`}>无选项</li>
             ) : (
@@ -137,16 +137,16 @@ export default function Select({
                     type="button"
                     onClick={() => handleSelect(opt.value)}
                     className={`
-                      w-full flex items-center justify-between text-left transition-colors rounded-md
-                      ${currentSize.option}
+                      w-full flex items-center justify-between text-left transition-all rounded-lg
+                      ${size === 'sm' ? 'px-2 py-1.5 text-xs' : 'px-3 py-2.5 text-[14px]'}
                       ${opt.value === value 
-                          ? 'bg-eq-bg-elevated text-eq-text-primary font-medium' 
-                          : 'text-eq-text-secondary hover:bg-eq-bg-elevated/50 hover:text-eq-text-primary'
+                          ? 'bg-transparent text-gray-900 dark:text-gray-100 font-medium' 
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-[#2a2a2e] hover:text-gray-900 dark:hover:text-gray-200'
                       }
                     `}
                   >
-                    <span className="truncate pr-2">{opt.label}</span>
-                    {opt.value === value && <Check className={`${currentSize.icon} text-eq-primary-500 flex-shrink-0`} />}
+                    <span className="truncate pr-3">{opt.label}</span>
+                    {opt.value === value && <Check className="w-4 h-4 text-blue-600 dark:text-blue-500 flex-shrink-0" strokeWidth={2.5} />}
                   </button>
                 </li>
               ))

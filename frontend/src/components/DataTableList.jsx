@@ -3,7 +3,7 @@ import { Plus, Pencil, Trash2, Loader2, Database, Play, AlertTriangle, Copy, X, 
 import { useTranslation } from 'react-i18next'
 import api from '../services/api'
 import Modal from './Modal'
-import Select from './ui/Select'
+import { Toolbar, ToolbarSearch, ToolbarSelect, ToolbarSeparator } from './ui/toolbar'
 
 function DataTableList({ onNavigate }) {
   const { t } = useTranslation('translation', { keyPrefix: 'easyquant' })
@@ -141,72 +141,57 @@ function DataTableList({ onNavigate }) {
   const totalPages = Math.ceil(pagination.total / pagination.pageSize)
 
   return (
-    <div className="space-y-3 animate-fadeIn h-full flex flex-col">
+    <div className="space-y-3">
       {/* Linear-Style Toolbar */}
       <div className="flex items-center justify-between px-1 py-2 mb-2 border-b border-eq-border-subtle/50">
         
         {/* Left: Unified Filter Bar */}
-        <div className="flex items-center gap-2">
+        <Toolbar>
+            <ToolbarSearch
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onSearch={handleSearchCommit}
+                placeholder={t('table.searchPlaceholder')}
+                width="w-64"
+            />
             
-            {/* Search - Ghost Style */}
-            <div className="group flex items-center gap-2 px-2 py-1 rounded-md transition-colors hover:bg-eq-bg-elevated/50">
-                <Search className="w-3.5 h-3.5 text-eq-text-muted group-hover:text-eq-text-secondary" />
-                <input
-                    type="text"
-                    placeholder={t('table.searchPlaceholder')}
-                    className="bg-transparent border-none p-0 text-xs w-24 focus:w-48 transition-all duration-300 text-eq-text-primary placeholder:text-eq-text-muted focus:ring-0"
-                    value={searchInput}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSearchCommit()}
-                />
-            </div>
+            <ToolbarSeparator />
 
-            {/* Divider */}
-            <div className="w-px h-3.5 bg-eq-border-subtle mx-1"></div>
+            <ToolbarSelect
+                value={filters.category_id}
+                onChange={(val) => { setFilters(prev => ({...prev, category_id: val})); setPagination(prev => ({...prev, page: 1})); }}
+                onClear={() => { setFilters(prev => ({...prev, category_id: 'all'})); setPagination(prev => ({...prev, page: 1})); }}
+                clearable={true}
+                options={categoryOptions}
+                placeholder={t('table.filters.category')}
+            />
 
-            {/* Filters - Ghost Style */}
-            <div className="flex items-center gap-2">
-                <div className="min-w-[140px]">
-                    <Select
-                        value={filters.category_id}
-                        onChange={(val) => { setFilters(prev => ({...prev, category_id: val})); setPagination(prev => ({...prev, page: 1})); }}
-                        onClear={() => { setFilters(prev => ({...prev, category_id: 'all'})); setPagination(prev => ({...prev, page: 1})); }}
-                        clearable={true}
-                        options={categoryOptions}
-                        placeholder={t('table.filters.category')}
-                        size="sm"
-                        variant="ghost"
-                    />
-                </div>
-                <div className="w-px h-3.5 bg-eq-border-subtle"></div>
-                <div className="min-w-[120px]">
-                    <Select
-                        value={filters.status}
-                        onChange={(val) => { setFilters(prev => ({...prev, status: val})); setPagination(prev => ({...prev, page: 1})); }}
-                        onClear={() => { setFilters(prev => ({...prev, status: 'all'})); setPagination(prev => ({...prev, page: 1})); }}
-                        clearable={true}
-                        options={statusOptions}
-                        placeholder={t('table.filters.status')}
-                        size="sm"
-                        variant="ghost"
-                    />
-                </div>
-            </div>
+            <ToolbarSeparator />
 
-            {/* Actions */}
+            <ToolbarSelect
+                value={filters.status}
+                onChange={(val) => { setFilters(prev => ({...prev, status: val})); setPagination(prev => ({...prev, page: 1})); }}
+                onClear={() => { setFilters(prev => ({...prev, status: 'all'})); setPagination(prev => ({...prev, page: 1})); }}
+                clearable={true}
+                options={statusOptions}
+                placeholder={t('table.filters.status')}
+                className="min-w-[120px]"
+            />
+
+            {/* Reset Actions */}
             {(filters.search || filters.category_id !== 'all' || filters.status !== 'all') && (
                 <>
-                    <div className="w-px h-3.5 bg-eq-border-subtle mx-1"></div>
+                    <ToolbarSeparator />
                     <button
                         onClick={handleReset}
-                        className="flex items-center gap-1.5 px-2 py-1 text-[11px] text-eq-text-muted hover:text-eq-text-primary hover:bg-eq-bg-elevated rounded transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-xs text-eq-text-muted hover:text-eq-text-primary hover:bg-eq-bg-elevated rounded transition-colors ml-1"
                     >
-                        <X className="w-3 h-3" />
+                        <X className="w-3.5 h-3.5" />
                         <span className="font-medium">{t('table.filters.reset')}</span>
                     </button>
                 </>
             )}
-        </div>
+        </Toolbar>
 
         {/* Right: Primary Action */}
         <div className="flex items-center gap-4">
@@ -225,14 +210,14 @@ function DataTableList({ onNavigate }) {
       </div>
 
       {/* Main Table Content */}
-      <div className="flex-1 flex flex-col min-h-0">
+      <div className="min-h-0">
         {loading && tables.length === 0 ? (
-            <div className="flex flex-col items-center justify-center flex-1 gap-4 py-12">
+            <div className="flex flex-col items-center justify-center gap-4 py-12">
             <Loader2 className="w-8 h-8 text-eq-primary-500 animate-spin" />
             <p className="text-sm text-eq-text-secondary">Loading Data...</p>
             </div>
         ) : tables.length === 0 ? (
-            <div className="flex flex-col items-center justify-center flex-1 py-12 bg-eq-bg-elevated/20 rounded-xl m-4">
+            <div className="flex flex-col items-center justify-center py-12 bg-eq-bg-elevated/20 rounded-xl m-4">
                 <div className="p-4 rounded-full bg-eq-bg-elevated mb-4">
                     <Database className="w-8 h-8 text-eq-text-muted/50" />
                 </div>
@@ -248,10 +233,10 @@ function DataTableList({ onNavigate }) {
                 </button>
             </div>
         ) : (
-            <div className="bg-eq-bg-surface border border-eq-border-default rounded-lg overflow-hidden shadow-sm flex flex-col flex-1">
-            <div className="overflow-auto flex-1 custom-scrollbar">
+            <div className="bg-eq-bg-surface border border-eq-border-default rounded-lg overflow-hidden shadow-sm">
+            <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left border-collapse">
-                    <thead className="bg-eq-bg-elevated/50 border-b border-eq-border-subtle text-eq-text-secondary sticky top-0 z-10 backdrop-blur-sm">
+                    <thead className="bg-eq-bg-elevated/50 border-b border-eq-border-subtle text-eq-text-secondary">
                     <tr>
                         <th className="px-6 py-3 font-semibold text-sm tracking-wide w-[25%]">{t('table.columns.displayName')}</th>
                         <th className="px-6 py-3 font-semibold text-sm tracking-wide w-[20%]">{t('table.columns.physicalTable')}</th>
