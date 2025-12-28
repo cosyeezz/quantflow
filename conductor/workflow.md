@@ -332,3 +332,22 @@ A task is complete when:
 - Document lessons learned
 - Optimize for user happiness
 - Keep things simple and maintainable
+
+## DevLog Protocol (开发日志协议)
+
+**Trigger:** When the user enters `/devlog [optional title]` or asks to "log this session".
+
+**Action:**
+1.  **Summarize:** Analyze the current session's conversation, tool executions, and file changes.
+2.  **Format:** Create a concise Markdown entry following the format below.
+3.  **Append:** Add the new entry to `devlog.md` (immediately after the main header or sorted chronologically).
+
+**Format Template:**
+```markdown
+## YYYY-MM-DD: <Title>
+
+**<Category/Theme>**
+- **操作**: <Brief description of action>
+- **决策**: <Key decisions made>
+- **状态**: <Current project state or track status>
+```
