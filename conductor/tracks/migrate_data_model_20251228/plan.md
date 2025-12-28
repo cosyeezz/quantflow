@@ -16,7 +16,7 @@
 ## Phase 3: 后端迁移 (Database & API)
 - [x] Task: 探索与定位后端资源 6937488
     - 分析 `easyquant_old_code/server`，识别对应的 API 路由、Models 和 Schemas。
-- [ ] Task: 迁移数据模型 (Models & Schemas)
+- [x] Task: 迁移数据模型 (Models & Schemas) fbe20b2
     - 迁移 SQLAlchemy 模型文件。
     - 迁移 Pydantic Schema 定义。
     - 迁移数据库基础类 (`base.py` 等)。
