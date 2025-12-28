@@ -761,3 +761,60 @@
   --color-dify-logo-dify-logo-blue: #0033ff;
   --color-dify-logo-dify-logo-black: #000000;
 }
+
+:root.dark {
+  /* --- Dark Mode Overrides --- */
+
+  /* Text */
+  --color-text-primary: var(--eq-text-primary);
+  --color-text-secondary: var(--eq-text-secondary);
+  --color-text-tertiary: var(--eq-text-muted);
+  --color-text-quaternary: #52525b; /* Zinc 600 */
+  --color-text-placeholder: #52525b;
+
+  /* Backgrounds */
+  --color-components-panel-bg: var(--eq-bg-surface);
+  --color-components-panel-bg-blur: rgba(24, 24, 27, 0.8); /* Zinc 900 / 0.8 */
+  --color-components-panel-border: var(--eq-border-default);
+  --color-components-panel-border-subtle: var(--eq-border-subtle);
+  
+  /* Inputs */
+  --color-components-input-bg-normal: var(--eq-bg-surface);
+  --color-components-input-text-filled: var(--eq-text-primary);
+  --color-components-input-text-placeholder: var(--eq-text-muted);
+  --color-components-input-border-hover: var(--eq-border-strong);
+  --color-components-input-bg-hover: var(--eq-bg-elevated);
+
+  /* Checkbox */
+  --color-components-checkbox-bg: var(--eq-primary-600);
+  --color-components-checkbox-bg-hover: var(--eq-primary-500);
+  --color-components-checkbox-bg-unchecked: var(--eq-bg-surface);
+  --color-components-checkbox-border: var(--eq-border-default);
+  --color-components-checkbox-border-hover: var(--eq-border-strong);
+  --color-components-checkbox-icon: #ffffff;
+
+  /* Switch */
+  --color-components-toggle-bg: var(--eq-primary-600);
+  --color-components-toggle-bg-unchecked: var(--eq-bg-elevated);
+  --color-components-toggle-knob: #ffffff;
+  --color-components-toggle-knob-disabled: #a1a1aa;
+
+  /* Buttons (Generic Mappings) */
+  --color-components-button-secondary-bg: var(--eq-bg-surface);
+  --color-components-button-secondary-text: var(--eq-text-primary);
+  --color-components-button-secondary-border: var(--eq-border-default);
+  --color-components-button-secondary-bg-hover: var(--eq-bg-elevated);
+
+  /* Toast Backgrounds (using eq-semantic-bg but darker/transparent) */
+  --color-toast-success-bg: rgba(6, 78, 59, 0.9);
+  --color-toast-warning-bg: rgba(69, 26, 3, 0.9);
+  --color-toast-error-bg: rgba(76, 5, 25, 0.9);
+  --color-toast-info-bg: rgba(23, 37, 84, 0.9);
+
+  /* Text Colors for Semantic States */
+  --color-text-success: var(--eq-success-text);
+  --color-text-warning: var(--eq-warning-text);
+  --color-text-destructive: var(--eq-danger-text);
+  --color-text-accent: var(--eq-info-text);
+  --color-text-warning-secondary: var(--eq-warning-text);
+}

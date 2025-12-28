@@ -1,12 +1,10 @@
-## 2025-12-28: 扩展交互组件库 (Checkbox, Switch, Toast)
+## 2025-12-28: 深色模式适配 (Dark Mode Support)
 
 **UI Refactoring**
 - **操作**:
-    - **Checkbox 组件**: 迁移 `Checkbox` 组件，内联了之前单独引用的 SVG 图标，并适配 Tailwind utility classes。
-    - **Switch 组件**: 迁移基于 `Headless UI` 的 `Switch` 组件，保留尺寸配置和动画效果。
-    - **Toast 组件**: 迁移全局消息提示系统，移除 `ActionButton` 依赖改用原生按钮，并配置了 Tailwind `backgroundImage` 以支持不同类型的 Toast 背景色。
-    - **Tailwind 配置更新**: 在 `tailwind.config.js` 中补充了 `toast-success-bg` 等背景变量映射。
-    - **Playground 更新**: 扩充 `App.tsx` 中的演示页面，集成 Checkbox, Switch 和 Toast 的交互示例。
+    - **CSS 变量补全**: 在 `frontend/src/dify-theme.css` 中新增 `:root.dark` 块，为核心 UI 组件（Input, Checkbox, Switch, Toast, Buttons）使用的 `components-*` 变量添加了深色模式下的映射值。
+    - **智能映射**: 将遗留的 `dify-colors` 变量映射到新的 `eq-*` 语义化变量（如 `eq-bg-surface`, `eq-text-primary`），确保新旧组件在深色模式下的一致性。
+    - **Toast 适配**: 为 Toast 组件配置了深色模式下的半透明背景色，确保文字对比度。
 - **决策**:
-    - Toast 组件移除对 `use-context-selector` 的强依赖逻辑，改用 React 原生 Context 或直接渲染，但目前仍保留基本架构以最小化改动。
-- **状态**: 基础 UI 组件库迁移基本完成，可支撑后续业务页面重构。
+    - 采用 "覆盖式" 策略修复深色模式：不直接修改遗留组件代码，而是通过 CSS 变量层面的重写来全局生效。这比逐个修改组件类名更高效且风险更低。
+- **状态**: 核心交互组件（Checkbox, Switch, Toast）现已支持深色模式。
