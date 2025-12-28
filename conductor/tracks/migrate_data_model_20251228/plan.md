@@ -14,7 +14,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2' [checkpoint: 5c890d5]
 
 ## Phase 3: 后端迁移 (Database & API)
-- [ ] Task: 探索与定位后端资源
+- [x] Task: 探索与定位后端资源 6937488
     - 分析 `easyquant_old_code/server`，识别对应的 API 路由、Models 和 Schemas。
 - [ ] Task: 迁移数据模型 (Models & Schemas)
     - 迁移 SQLAlchemy 模型文件。
