@@ -141,13 +141,27 @@ function App() {
 }
 
 // Minimal Playground Component
+import { useState } from 'react'
 import { Button } from './components/ui/button'
+import Select, { SimpleSelect, PortalSelect } from './components/ui/select'
+import Input from './components/ui/input'
+import Tooltip from './components/ui/tooltip'
+import Modal from './components/ui/modal'
 
 const UIPlayground = () => {
+  const [showModal, setShowModal] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+
+  const items = [
+    { value: 1, name: 'Option 1' },
+    { value: 2, name: 'Option 2' },
+    { value: 3, name: 'Option 3 - Disabled', disabled: true },
+  ]
+
   return (
-    <div className="space-y-8 p-4">
-      <section>
-        <h2 className="text-lg font-semibold mb-4">Buttons</h2>
+    <div className="space-y-12 p-8 max-w-4xl mx-auto pb-32">
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold border-b pb-2">Buttons</h2>
         <div className="flex flex-wrap gap-4 items-center">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -161,6 +175,75 @@ const UIPlayground = () => {
           <Button variant="primary" destructive>Destructive</Button>
         </div>
       </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold border-b pb-2">Inputs</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Input placeholder="Default Input" value={inputValue} onChange={(e) => setInputValue(e.target.value)} showClearIcon onClear={() => setInputValue('')} />
+          <Input placeholder="With Icon" showLeftIcon />
+          <Input placeholder="Disabled" disabled />
+          <Input placeholder="Destructive" destructive defaultValue="Error value" />
+          <Input placeholder="With Unit" unit="USD" />
+          <Input placeholder="Large Input" size="large" showLeftIcon />
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold border-b pb-2">Selects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium">Default (Combobox)</h3>
+            <Select 
+              items={items} 
+              onSelect={(item) => console.log('Selected:', item)} 
+              defaultValue={1}
+            />
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium">SimpleSelect (Listbox)</h3>
+            <SimpleSelect 
+              items={items} 
+              onSelect={(item) => console.log('Selected:', item)} 
+              defaultValue={2}
+            />
+          </div>
+          <div className="space-y-2">
+             <h3 className="text-sm font-medium">PortalSelect (Floating)</h3>
+             <PortalSelect
+               value={1}
+               items={items}
+               onSelect={(item) => console.log('Selected:', item)}
+             />
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold border-b pb-2">Overlays</h2>
+        <div className="flex gap-4 items-center">
+          <Tooltip popupContent="This is a nice tooltip!">
+             <Button variant="secondary">Hover me (Tooltip)</Button>
+          </Tooltip>
+
+          <Button variant="primary" onClick={() => setShowModal(true)}>Open Modal</Button>
+        </div>
+      </section>
+
+      <Modal 
+        isShow={showModal} 
+        onClose={() => setShowModal(false)} 
+        title="Example Modal"
+        description="This is a standard modal dialog migrated from the legacy codebase."
+        closable
+      >
+        <div className="mt-4 space-y-4">
+          <p className="text-text-secondary">It uses Headless UI Dialog and supports various configurations.</p>
+          <div className="flex justify-end gap-2">
+            <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+            <Button variant="primary" onClick={() => setShowModal(false)}>Confirm</Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
