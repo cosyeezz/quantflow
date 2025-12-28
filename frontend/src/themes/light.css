@@ -1,27 +1,26 @@
-:root {
-  /* Input: Change from transparent gray to white for better contrast */
-  --color-components-input-bg-normal: #ffffff;
+/* Attention: Generate by code. Don't update by hand!!! */
+html.light,
+.light,
+[data-theme="light"] {
+  --color-components-input-bg-normal: rgb(200 206 218 / 0.25);
   --color-components-input-text-placeholder: #98a2b2;
-  --color-components-input-bg-hover: #f9fafb;
-  --color-components-input-bg-active: #ffffff;
+  --color-components-input-bg-hover: rgb(200 206 218 / 0.14);
+  --color-components-input-bg-active: #f9fafb;
   --color-components-input-border-active: #d0d5dc;
   --color-components-input-border-destructive: #fda29b;
   --color-components-input-text-filled: #101828;
   --color-components-input-bg-destructive: #ffffff;
-  --color-components-input-bg-disabled: #f2f4f7; /* Darker gray for disabled */
+  --color-components-input-bg-disabled: rgb(200 206 218 / 0.14);
   --color-components-input-text-disabled: #d0d5dc;
   --color-components-input-text-filled-disabled: #676f83;
-  --color-components-input-border-hover: #98a2b2; /* Darker border on hover */
+  --color-components-input-border-hover: #d0d5dc;
   --color-components-input-border-active-prompt-1: #0ba5ec;
   --color-components-input-border-active-prompt-2: #155aef;
 
-  /* ... (keep other vars) ... */
+  --color-components-kbd-bg-gray: rgb(16 24 40 / 0.04);
+  --color-components-kbd-bg-white: rgb(255 255 255 / 0.12);
 
-  /* Switch: Darken unchecked state */
-  --color-components-toggle-bg-unchecked: #d0d5dc; /* Was #e9ebf0 */
-  --color-components-toggle-bg-unchecked-hover: #98a2b2;
-  --color-components-toggle-bg-unchecked-disabled: #f2f4f7;
-
+  --color-components-tooltip-bg: rgb(255 255 255 / 0.95);
 
   --color-components-button-primary-text: #ffffff;
   --color-components-button-primary-bg: #155aef;
@@ -764,68 +763,5 @@
 
   --color-dify-logo-dify-logo-blue: #0033ff;
   --color-dify-logo-dify-logo-black: #000000;
-}
 
-:root.dark {
-  /* --- Dark Mode Overrides --- */
-
-  /* Text */
-  --color-text-primary: var(--eq-text-primary);
-  --color-text-secondary: var(--eq-text-secondary);
-  --color-text-tertiary: var(--eq-text-muted);
-  --color-text-quaternary: #52525b; /* Zinc 600 */
-  --color-text-placeholder: #52525b;
-
-  /* Backgrounds */
-  --color-components-panel-bg: var(--eq-bg-surface);
-  --color-components-panel-bg-blur: rgba(24, 24, 27, 0.8); /* Zinc 900 / 0.8 */
-  --color-components-panel-border: var(--eq-border-default);
-  --color-components-panel-border-subtle: var(--eq-border-subtle);
-  
-  /* Inputs */
-  --color-components-input-bg-normal: var(--eq-bg-surface);
-  --color-components-input-text-filled: var(--eq-text-primary);
-  --color-components-input-text-placeholder: var(--eq-text-muted);
-  --color-components-input-border-hover: var(--eq-border-strong);
-  --color-components-input-bg-hover: var(--eq-bg-elevated);
-  /* Fix: Destructive Input in Dark Mode */
-  --color-components-input-bg-destructive: rgba(69, 10, 10, 0.2); /* Subtle dark red */
-  --color-components-input-border-destructive: var(--eq-danger-border);
-
-  /* Checkbox */
-  --color-components-checkbox-bg: var(--eq-primary-600);
-  --color-components-checkbox-bg-hover: var(--eq-primary-500);
-  --color-components-checkbox-bg-unchecked: var(--eq-bg-surface);
-  --color-components-checkbox-border: var(--eq-border-default);
-  --color-components-checkbox-border-hover: var(--eq-border-strong);
-  --color-components-checkbox-icon: #ffffff;
-
-  /* Switch */
-  --color-components-toggle-bg: var(--eq-primary-600);
-  --color-components-toggle-bg-unchecked: var(--eq-bg-elevated);
-  --color-components-toggle-knob: #ffffff;
-  --color-components-toggle-knob-disabled: #a1a1aa;
-
-  /* Buttons (Generic Mappings) */
-  --color-components-button-secondary-bg: var(--eq-bg-surface);
-  --color-components-button-secondary-text: var(--eq-text-primary);
-  --color-components-button-secondary-border: var(--eq-border-default);
-  --color-components-button-secondary-bg-hover: var(--eq-bg-elevated);
-  /* Fix: Tertiary Button in Dark Mode */
-  --color-components-button-tertiary-bg: var(--eq-bg-elevated);
-  --color-components-button-tertiary-bg-hover: var(--eq-bg-overlay);
-  --color-components-button-tertiary-text: var(--eq-text-secondary);
-
-  /* Toast Backgrounds (using eq-semantic-bg but darker/transparent) */
-  --color-toast-success-bg: rgba(6, 78, 59, 0.9);
-  --color-toast-warning-bg: rgba(69, 26, 3, 0.9);
-  --color-toast-error-bg: rgba(76, 5, 25, 0.9);
-  --color-toast-info-bg: rgba(23, 37, 84, 0.9);
-
-  /* Text Colors for Semantic States */
-  --color-text-success: var(--eq-success-text);
-  --color-text-warning: var(--eq-warning-text);
-  --color-text-destructive: var(--eq-danger-text);
-  --color-text-accent: var(--eq-info-text);
-  --color-text-warning-secondary: var(--eq-warning-text);
 }
