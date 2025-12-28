@@ -1,41 +1,41 @@
-# Track Specification: Migrate Data Model Management Page (No Mock)
+# Track Specification: 迁移数据模型管理页面 (无 Mock)
 
-## 1. Goal
-To successfully migrate the "Data Model" management page from the legacy design to the new QuantFlow project. This involves recreating the UI pixel-perfectly based on the provided screenshot and implementing the supporting backend APIs immediately (no mocking allowed).
+## 1. 目标
+从旧设计成功迁移“数据模型”管理页面到新的 QuantFlow 项目。这涉及基于提供的截图完美复刻 UI，并立即实现支持的后端 API（不允许使用 Mock）。
 
-## 2. Scope
-### Frontend (React + Tailwind)
-- **Global Layout**:
-  - Header: Logo "EasyQuant Pro", Status Indicators (Online, CPU, RAM), Language Switcher, Theme Switcher.
-  - Navigation Tabs: "数据模型" (Data Model), "工作流任务" (Workflow Tasks), "系统监控" (System Monitor).
-- **Data Model Page**:
-  - **Toolbar**: Search bar, Category dropdown, Status dropdown, Pagination summary, "New Table" button.
-  - **Data Table**:
-    - Columns: Display Name, Physical Table Name (copyable), Category (Tag style), Status (with colored dot), Actions (Copy, Edit, Delete).
-    - Rows: Render real data fetched from the backend.
-    - Pagination: Bottom pagination controls.
+## 2. 范围
+### 前端 (React + Tailwind)
+- **全局布局**:
+  - 头部: Logo "EasyQuant Pro", 状态指示器 (在线, CPU, 内存), 语言切换, 主题切换。
+  - 导航标签: "数据模型", "工作流任务", "系统监控"。
+- **数据模型页面**:
+  - **工具栏**: 搜索框, 分类下拉框, 状态下拉框, 分页摘要, "新建表" 按钮。
+  - **数据表格**:
+    - 列: 显示名称, 物理表名 (可复制), 分类 (标签样式), 状态 (带颜色圆点), 操作 (复制, 编辑, 删除)。
+    - 行: 渲染从后端获取的真实数据。
+    - 分页: 底部显示分页控件。
 
-### Backend (FastAPI + SQLAlchemy)
-- **Database Model**: `DataModel` table with fields matching the UI:
-  - `display_name` (string)
-  - `physical_table_name` (string)
-  - `category` (enum/string)
-  - `status` (enum: Published, Draft, etc.)
-- **API Endpoints**:
-  - `GET /api/v1/data-models`: List models with pagination, search, and filtering.
-  - `POST /api/v1/data-models`: Create a new model.
-  - `PUT /api/v1/data-models/{id}`: Update a model.
-  - `DELETE /api/v1/data-models/{id}`: Delete a model.
+### 后端 (FastAPI + SQLAlchemy)
+- **数据库模型**: `DataModel` 表，字段与 UI 匹配:
+  - `display_name` (字符串)
+  - `physical_table_name` (字符串)
+  - `category` (枚举/字符串)
+  - `status` (枚举: Published, Draft 等)
+- **API 端点**:
+  - `GET /api/v1/data-models`: 列表获取，支持分页、搜索和过滤。
+  - `POST /api/v1/data-models`: 创建新模型。
+  - `PUT /api/v1/data-models/{id}`: 更新模型。
+  - `DELETE /api/v1/data-models/{id}`: 删除模型。
 
-## 3. Tech Stack & Constraints
-- **Frontend**: React 18, Vite, TailwindCSS.
-- **Backend**: Python 3.10+, FastAPI, SQLAlchemy, PostgreSQL.
-- **Strategy**: Frontend-Driven Copy & Verify.
-- **Constraint**: **NO MOCKS**. All frontend components must consume real APIs.
+## 3. 技术栈与约束
+- **前端**: React 18, Vite, TailwindCSS.
+- **后端**: Python 3.10+, FastAPI, SQLAlchemy, PostgreSQL.
+- **策略**: 前端驱动的复制与验证。
+- **约束**: **禁止 Mock**。所有前端组件必须消费真实的 API。
 
-## 4. Acceptance Criteria
-- The UI matches the provided screenshot visually.
-- The "Data Model" tab is active.
-- Real data is fetched from the database and displayed in the table.
-- Clicking "New Table" (even if just a placeholder modal for now) triggers a real API call or prepares for one.
-- Filtering and Pagination work with the backend.
+## 4. 验收标准
+- UI 在视觉上与提供的截图匹配。
+- “数据模型”标签处于激活状态。
+- 表格显示从数据库获取的真实数据。
+- 点击“新建表”（即使目前只是一个占位符弹窗）能触发真实的 API 调用或为调用做准备。
+- 过滤和分页功能与后端联动正常。
