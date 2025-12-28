@@ -6,6 +6,11 @@ import DataTableEditor from './components/DataTableEditor'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import { useWebSocket } from './hooks/useWebSocket'
 import { useTheme } from './contexts/ThemeContext'
+import { Button } from './components/ui/button'
+import Select, { SimpleSelect, PortalSelect } from './components/ui/select'
+import Input from './components/ui/input'
+import Tooltip from './components/ui/tooltip'
+import Modal from './components/ui/modal'
 
 // Placeholder for missing components
 const ProcessMonitor = () => <div className="p-4">Process Monitor Placeholder</div>
@@ -140,23 +145,29 @@ function App() {
   )
 }
 
-// Minimal Playground Component
-import { useState } from 'react'
-import { Button } from './components/ui/button'
-import Select, { SimpleSelect, PortalSelect } from './components/ui/select'
-import Input from './components/ui/input'
-import Tooltip from './components/ui/tooltip'
-import Modal from './components/ui/modal'
+import Checkbox from './components/ui/checkbox'
+import Switch from './components/ui/switch'
+import Toast from './components/ui/toast'
 
+// Minimal Playground Component
 const UIPlayground = () => {
   const [showModal, setShowModal] = useState(false)
   const [inputValue, setInputValue] = useState('')
+  const [isChecked, setIsChecked] = useState(false)
+  const [isSwitched, setIsSwitched] = useState(false)
 
   const items = [
     { value: 1, name: 'Option 1' },
     { value: 2, name: 'Option 2' },
     { value: 3, name: 'Option 3 - Disabled', disabled: true },
   ]
+
+  const showToast = (type: 'success' | 'error' | 'warning' | 'info') => {
+    Toast.notify({
+      type,
+      message: `This is a ${type} toast message!`,
+    })
+  }
 
   return (
     <div className="space-y-12 p-8 max-w-4xl mx-auto pb-32">
@@ -177,14 +188,30 @@ const UIPlayground = () => {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold border-b pb-2">Inputs</h2>
+        <h2 className="text-xl font-bold border-b pb-2">Inputs & Controls</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Input placeholder="Default Input" value={inputValue} onChange={(e) => setInputValue(e.target.value)} showClearIcon onClear={() => setInputValue('')} />
           <Input placeholder="With Icon" showLeftIcon />
           <Input placeholder="Disabled" disabled />
           <Input placeholder="Destructive" destructive defaultValue="Error value" />
-          <Input placeholder="With Unit" unit="USD" />
-          <Input placeholder="Large Input" size="large" showLeftIcon />
+        </div>
+        <div className="flex gap-8 items-center mt-4">
+           <div className="flex items-center gap-2">
+             <Checkbox id="chk1" checked={isChecked} onCheck={() => setIsChecked(!isChecked)} />
+             <label htmlFor="chk1" className="cursor-pointer select-none" onClick={() => setIsChecked(!isChecked)}>Checkbox</label>
+           </div>
+           <div className="flex items-center gap-2">
+             <Checkbox id="chk2" checked={true} disabled />
+             <label htmlFor="chk2" className="text-gray-400">Disabled Checked</label>
+           </div>
+           <div className="flex items-center gap-2">
+             <Switch checked={isSwitched} onChange={setIsSwitched} />
+             <label className="cursor-pointer select-none" onClick={() => setIsSwitched(!isSwitched)}>Switch</label>
+           </div>
+            <div className="flex items-center gap-2">
+             <Switch checked={true} disabled />
+             <label className="text-gray-400">Disabled Switch</label>
+           </div>
         </div>
       </section>
 
@@ -219,13 +246,20 @@ const UIPlayground = () => {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold border-b pb-2">Overlays</h2>
-        <div className="flex gap-4 items-center">
+        <h2 className="text-xl font-bold border-b pb-2">Overlays & Feedback</h2>
+        <div className="flex gap-4 items-center flex-wrap">
           <Tooltip popupContent="This is a nice tooltip!">
              <Button variant="secondary">Hover me (Tooltip)</Button>
           </Tooltip>
 
           <Button variant="primary" onClick={() => setShowModal(true)}>Open Modal</Button>
+          
+          <div className="h-8 w-px bg-gray-200 mx-2"></div>
+          
+          <Button variant="secondary" onClick={() => showToast('success')}>Success Toast</Button>
+          <Button variant="secondary" onClick={() => showToast('error')}>Error Toast</Button>
+          <Button variant="secondary" onClick={() => showToast('warning')}>Warning Toast</Button>
+          <Button variant="secondary" onClick={() => showToast('info')}>Info Toast</Button>
         </div>
       </section>
 
