@@ -4,5 +4,10 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track: Migrate Data Model Management Page (No Mock)
+## [~] Track: UI Refactoring & Component Library
+*Link: [./conductor/tracks/ui_refactor_20251228/](./conductor/tracks/ui_refactor_20251228/)*
+- **Status**: Active
+- **Goal**: Consolidate UI styles, build a reusable component library (Atomic Design) based on legacy code, and normalize Tailwind usage.
+
+## [x] Track: Migrate Data Model Management Page (No Mock)
 *Link: [./conductor/tracks/migrate_data_model_20251228/](./conductor/tracks/migrate_data_model_20251228/)*

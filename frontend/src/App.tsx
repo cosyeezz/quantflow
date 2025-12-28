@@ -31,6 +31,7 @@ function App() {
     // Temporarily hide other tabs or keep them as placeholders if needed for layout verification
     { id: 'etl', name: t('nav.pipelines') || 'Pipelines', icon: Database },
     { id: 'monitor', name: t('nav.monitor') || 'Monitor', icon: Activity },
+    { id: 'playground', name: 'UI Playground', icon: Command },
   ]
 
   return (
@@ -133,7 +134,33 @@ function App() {
         {activeTab === 'etl' && <ETLTaskList />}
         {activeTab === 'etl-edit' && <ETLTaskEditor />}
         {activeTab === 'monitor' && <ProcessMonitor />}
+        {activeTab === 'playground' && <UIPlayground />}
       </main>
+    </div>
+  )
+}
+
+// Minimal Playground Component
+import { Button } from './components/ui/button'
+
+const UIPlayground = () => {
+  return (
+    <div className="space-y-8 p-4">
+      <section>
+        <h2 className="text-lg font-semibold mb-4">Buttons</h2>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="tertiary">Tertiary</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="warning">Warning</Button>
+          <Button variant="primary" disabled>Disabled</Button>
+          <Button variant="primary" loading>Loading</Button>
+          <Button variant="primary" size="small">Small</Button>
+          <Button variant="primary" size="large">Large</Button>
+          <Button variant="primary" destructive>Destructive</Button>
+        </div>
+      </section>
     </div>
   )
 }
