@@ -5,25 +5,13 @@
 - [x] Task: 后端核心设置 98397d6
 - [x] Task: Conductor - User Manual Verification 'Phase 1' [checkpoint: fcd6e8d]
 
-## Phase 2: 前端迁移 (UI First)
-- [ ] Task: 探索与定位前端资源
-    - 分析 `easyquant_old_code/client`，识别数据模型管理相关的 Page、Component、Route 和 Service 文件。
-    - 记录关键文件路径。
-- [ ] Task: 迁移前端基础配置
-    - 检查并迁移必要的 `package.json` 依赖。
-    - 同步 `tailwind.config.js` 和其他构建配置。
-    - 迁移全局样式和主题配置。
-- [ ] Task: 迁移 UI 组件与页面
-    - 复制并适配数据模型管理页面 (`DataModelPage` 或类似)。
-    - 复制并适配相关子组件 (表格、工具栏、弹窗等)。
-    - 适配路由配置。
-- [ ] Task: 迁移前端服务层
-    - 复制并适配 API 请求函数 (Axios/React Query)。
-    - 定义 TypeScript 类型定义 (Interfaces)。
-- [ ] Task: 前端构建与运行验证
-    - 解决编译错误。
-    - 确保页面可访问（即使无数据或报错）。
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+## Phase 2: 前端迁移 (UI First) (Completed)
+- [x] Task: 探索与定位前端资源 5c890d5
+- [x] Task: 迁移前端基础配置 5c890d5
+- [x] Task: 迁移 UI 组件与页面 5c890d5
+- [x] Task: 迁移前端服务层 5c890d5
+- [x] Task: 前端构建与运行验证 5c890d5
+- [x] Task: Conductor - User Manual Verification 'Phase 2' [checkpoint: 5c890d5]
 
 ## Phase 3: 后端迁移 (Database & API)
 - [ ] Task: 探索与定位后端资源
