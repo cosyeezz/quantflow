@@ -1,0 +1,80 @@
+const translation = {
+  common: {
+    create: '新建任务',
+    save: '保存',
+    saving: '保存中...',
+    run: '运行',
+    running: '运行中...',
+    confirm: '确定',
+    cancel: '取消',
+    name: '名称',
+    description: '描述',
+    actions: '操作',
+    editWorkflow: '编辑工作流',
+  },
+  nav: {
+    schemas: '数据模型',
+    pipelines: '工作流任务',
+    monitor: '系统监控',
+  },
+  table: {
+    newTable: '新建表',
+    searchPlaceholder: '搜索...',
+    columns: {
+      displayName: '显示名称',
+      physicalTable: '物理表名',
+      category: '分类',
+      status: '状态',
+      actions: '操作',
+    },
+    filters: {
+      category: '分类',
+      allCategories: '全部分类',
+      status: '状态',
+      allStatus: '全部状态',
+      draft: '草稿',
+      published: '已发布',
+      reset: '重置',
+    },
+    pagination: {
+      showing: '显示',
+      of: '共',
+      rows: '行',
+    },
+    empty: '暂无数据',
+  },
+  status: {
+    online: '在线',
+    cpu: 'CPU',
+    mem: '内存',
+  },
+  workflow: {
+    config: {
+      allowedTypes: '允许的文件类型',
+      allowMultiple: '允许选择多个文件',
+      defaultPath: '默认路径',
+      min: '最小值',
+      max: '最大值',
+      step: '步长',
+      default: '默认值',
+      placeholder: '占位提示文字',
+      maxLength: '最大长度',
+      pattern: '正则校验 (Regex)',
+      options: '选项列表',
+      addOption: '添加选项',
+      language: '代码语言',
+      height: '编辑器高度',
+      availableModes: '可用模式',
+      allowedColumnTypes: '允许的列类型',
+      connectionId: '数据库连接 ID',
+      tableFilter: '表名过滤 (Regex)',
+      batchSize: '批次大小 (Batch Size)',
+      workers: '并行进程数 (Workers)',
+    },
+    common: {
+      copy: '复制',
+    },
+  }
+}
+
+export default translation
