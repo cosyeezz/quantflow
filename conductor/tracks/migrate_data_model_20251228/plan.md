@@ -1,55 +1,51 @@
 # Track Plan: 迁移数据模型管理页面 (无 Mock)
 
-## Phase 1: 项目脚手架与基础设施
+## Phase 1: 项目脚手架与基础设施 (Completed)
 - [x] Task: 初始化项目结构 e845ab9
-    - 创建 `frontend` (Vite) 和 `backend` (FastAPI) 的根目录结构。
-    - 配置 `frontend/package.json` (React, Tailwind, Axios/Query)。
-    - 配置 `backend/pyproject.toml` (FastAPI, SQLAlchemy, Pydantic, Uvicorn)。
-    - 配置基础的 `docker-compose.yml` 以启动 PostgreSQL 和 Redis。
 - [x] Task: 后端核心设置 98397d6
-    - 实现数据库连接逻辑 (`backend/app/db/session.py`)。
-    - 创建基础 SQLAlchemy 模型类。
-    - 配置 FastAPI CORS 以允许前端请求。
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1' [checkpoint: fcd6e8d]
 
-## Phase 2: 后端实现 (API First)
-- [ ] Task: 定义数据模型 Schema
-    - 在 `backend/app/models/` 中创建 SQLAlchemy 模型 `DataModel`。
-    - 在 `backend/app/schemas/` 中创建 Pydantic Schema (`DataModelCreate`, `DataModelRead`)。
-- [ ] Task: 实现 CRUD 端点
-    - 在 `backend/app/api/v1/endpoints/data_models.py` 中创建 API 路由。
-    - 实现 `GET /` (列表) 及其分页参数。
-    - 实现 `POST /` (创建)。
-    - 实现 `DELETE /` 和 `PUT /`。
-- [ ] Task: 注册路由并验证
-    - 将路由注册到主 FastAPI 应用中。
-    - 添加脚本或测试以插入种子数据（由于无法 Mock，这对 UI 验证至关重要）。
+## Phase 2: 前端迁移 (UI First)
+- [ ] Task: 探索与定位前端资源
+    - 分析 `easyquant_old_code/client`，识别数据模型管理相关的 Page、Component、Route 和 Service 文件。
+    - 记录关键文件路径。
+- [ ] Task: 迁移前端基础配置
+    - 检查并迁移必要的 `package.json` 依赖。
+    - 同步 `tailwind.config.js` 和其他构建配置。
+    - 迁移全局样式和主题配置。
+- [ ] Task: 迁移 UI 组件与页面
+    - 复制并适配数据模型管理页面 (`DataModelPage` 或类似)。
+    - 复制并适配相关子组件 (表格、工具栏、弹窗等)。
+    - 适配路由配置。
+- [ ] Task: 迁移前端服务层
+    - 复制并适配 API 请求函数 (Axios/React Query)。
+    - 定义 TypeScript 类型定义 (Interfaces)。
+- [ ] Task: 前端构建与运行验证
+    - 解决编译错误。
+    - 确保页面可访问（即使无数据或报错）。
 - [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: 前端布局与组件
-- [ ] Task: 全局布局实现
-    - 创建 `MainLayout` 组件。
-    - 实现头部 (Logo, 状态占位符, 主题切换)。
-    - 实现导航标签 (仅视觉效果和简单的切换逻辑)。
-- [ ] Task: API 客户端设置
-    - 配置 Axios 实例及其 Base URL。
-    - 创建 `api/dataModels.ts` 服务方法。
-- [ ] Task: 数据模型页面 - 结构与工具栏
-    - 创建 `DataModelPage` 组件。
-    - 实现搜索栏和过滤下拉框 (先仅实现 UI)。
-    - 实现“新建表”按钮样式。
-- [ ] Task: 数据模型页面 - 数据表格集成
-    - 使用 Tailwind 实现 Table 组件。
-    - **集成**: 从 `GET /api/v1/data-models` 获取数据并渲染行。
-    - 将 API 状态字段映射到 UI 颜色 (例如 "Published" -> 绿点)。
+## Phase 3: 后端迁移 (Database & API)
+- [ ] Task: 探索与定位后端资源
+    - 分析 `easyquant_old_code/server`，识别对应的 API 路由、Models 和 Schemas。
+- [ ] Task: 迁移数据模型 (Models & Schemas)
+    - 迁移 SQLAlchemy 模型文件。
+    - 迁移 Pydantic Schema 定义。
+    - 迁移数据库基础类 (`base.py` 等)。
+- [ ] Task: 迁移 API 端点
+    - 迁移 API 路由文件。
+    - 适配依赖注入 (DB Session)。
+    - 注册路由到 FastAPI `main.py`。
+- [ ] Task: 前后端联调
+    - 验证前端能否成功调用后端接口。
+    - 修复数据格式不匹配问题。
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: 打磨与完善
-- [ ] Task: 分页集成
-    - 将 UI 分页控件连接到 API 分页参数。
-- [ ] Task: 复制到剪贴板交互
-    - 实现“物理表名”列的复制功能。
-- [ ] Task: 最终 UI 打磨
-    - 根据截图验证字体、间距和颜色。
-    - 确保满足“严格规范” (Linting/Types)。
+- [ ] Task: 最终 UI/UX 检查
+    - 确保样式与旧版/截图一致。
+    - 检查交互细节（分页、复制功能等）。
+- [ ] Task: 清理与规范化
+    - 移除未使用的代码。
+    - 运行 Lint 和 Type Check。
 - [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
