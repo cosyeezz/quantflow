@@ -1,10 +1,7 @@
-## 2025-12-28: 深色模式适配 (Dark Mode Support)
+## 2025-12-28: 视觉优化 (Visual Polish)
 
 **UI Refactoring**
 - **操作**:
-    - **CSS 变量补全**: 在 `frontend/src/dify-theme.css` 中新增 `:root.dark` 块，为核心 UI 组件（Input, Checkbox, Switch, Toast, Buttons）使用的 `components-*` 变量添加了深色模式下的映射值。
-    - **智能映射**: 将遗留的 `dify-colors` 变量映射到新的 `eq-*` 语义化变量（如 `eq-bg-surface`, `eq-text-primary`），确保新旧组件在深色模式下的一致性。
-    - **Toast 适配**: 为 Toast 组件配置了深色模式下的半透明背景色，确保文字对比度。
-- **决策**:
-    - 采用 "覆盖式" 策略修复深色模式：不直接修改遗留组件代码，而是通过 CSS 变量层面的重写来全局生效。这比逐个修改组件类名更高效且风险更低。
-- **状态**: 核心交互组件（Checkbox, Switch, Toast）现已支持深色模式。
+    - **修复深色模式输入框错误状态**: 将 `input` 组件在 error 状态下的背景色从纯白 (`#ffffff`) 修改为半透明深红 (`rgba(69, 10, 10, 0.2)`), 边框颜色适配深色主题，解决视觉突兀问题。
+    - **优化 Tertiary 按钮**: 调整 Tertiary 按钮在深色模式下的背景色为 `eq-bg-elevated`，避免出现高亮白色块。
+- **状态**: UI 组件库视觉一致性进一步提升。

@@ -784,6 +784,9 @@
   --color-components-input-text-placeholder: var(--eq-text-muted);
   --color-components-input-border-hover: var(--eq-border-strong);
   --color-components-input-bg-hover: var(--eq-bg-elevated);
+  /* Fix: Destructive Input in Dark Mode */
+  --color-components-input-bg-destructive: rgba(69, 10, 10, 0.2); /* Subtle dark red */
+  --color-components-input-border-destructive: var(--eq-danger-border);
 
   /* Checkbox */
   --color-components-checkbox-bg: var(--eq-primary-600);
@@ -804,6 +807,10 @@
   --color-components-button-secondary-text: var(--eq-text-primary);
   --color-components-button-secondary-border: var(--eq-border-default);
   --color-components-button-secondary-bg-hover: var(--eq-bg-elevated);
+  /* Fix: Tertiary Button in Dark Mode */
+  --color-components-button-tertiary-bg: var(--eq-bg-elevated);
+  --color-components-button-tertiary-bg-hover: var(--eq-bg-overlay);
+  --color-components-button-tertiary-text: var(--eq-text-secondary);
 
   /* Toast Backgrounds (using eq-semantic-bg but darker/transparent) */
   --color-toast-success-bg: rgba(6, 78, 59, 0.9);
