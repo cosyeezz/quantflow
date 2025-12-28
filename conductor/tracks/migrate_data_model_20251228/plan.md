@@ -1,7 +1,7 @@
 # Track Plan: 迁移数据模型管理页面 (无 Mock)
 
 ## Phase 1: 项目脚手架与基础设施
-- [ ] Task: 初始化项目结构
+- [~] Task: 初始化项目结构
     - 创建 `frontend` (Vite) 和 `backend` (FastAPI) 的根目录结构。
     - 配置 `frontend/package.json` (React, Tailwind, Axios/Query)。
     - 配置 `backend/pyproject.toml` (FastAPI, SQLAlchemy, Pydantic, Uvicorn)。
