@@ -20,8 +20,11 @@
     - 迁移 SQLAlchemy 模型文件。
     - 迁移 Pydantic Schema 定义。
     - 迁移数据库基础类 (`base.py` 等)。
-- [ ] Task: 迁移 API 端点
+- [x] Task: 迁移 API 端点 616370d
     - 迁移 API 路由文件。
+    - 适配依赖注入 (DB Session)。
+    - 注册路由到 FastAPI `main.py`。
+- [ ] Task: 前后端联调
     - 适配依赖注入 (DB Session)。
     - 注册路由到 FastAPI `main.py`。
 - [ ] Task: 前后端联调
